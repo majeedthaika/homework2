@@ -5,9 +5,6 @@
         <span style="line-height: 36px;">New Post</span>
       </div>
       <el-form>
-        <el-form-item label="Name">
-          <el-input v-model="post.name"></el-input>
-        </el-form-item>
         <el-form-item label="Content">
           <el-input v-model="post.content"></el-input>
         </el-form-item>
@@ -28,15 +25,16 @@ export default {
   data () {
     return {
       post: {
-        name: '',
         content: ''
       }
     }
   },
   methods: {
     createPost () {
-      PostsApi.createPost(this.post,
+      var content = this.post.content
+      PostsApi.createPost(content,
         function (_post) {
+          console.log(_post)
           router.push({ name: 'Posts.index' })
         }
       )
