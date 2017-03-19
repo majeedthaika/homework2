@@ -3,6 +3,9 @@
     <el-row>
       <iccs340-post :post='post'></iccs340-post>
     </el-row>
+    <div slot="header" class="clearfix">
+      <span style="font-size: 36px;">Comments</span>
+    </div>
     <el-row v-for="comment in comments">
       <iccs340-comment :comment='comment'></iccs340-comment>
     </el-row>

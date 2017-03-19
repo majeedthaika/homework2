@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <div class="sign-out" style="float: right;">
-      <el-button  v-if="showLogoutButton()" type="primary" @click.native="logout">Logout</el-button>
+    <div v-if="showLogoutButton()" class="sign-out" style="float: right;">
+      <router-link :to="{ name: 'Posts.index' }">
+        <el-button>All Posts</el-button>
+      </router-link>
+      <router-link :to="{ name: 'Posts.new' }">
+        <el-button>New Post</el-button>
+      </router-link>
+      <el-button type="primary" @click.native="logout">Logout</el-button>
     </div>
     <br><br><br>
     <router-view></router-view>
@@ -23,7 +29,7 @@ export default {
       })
     },
     showLogoutButton () {
-      return store.state.auth
+      return store.getters.loggedIn
     }
   }
 }

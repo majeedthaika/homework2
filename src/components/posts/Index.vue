@@ -1,5 +1,8 @@
 <template>
   <div class="posts">
+    <div slot="header" class="clearfix">
+      <span style="font-size: 36px;">Posts</span>
+    </div>
     <el-row v-for="post in posts">
       <router-link :to="{ name: 'Posts.show', params: {id: post.id } }">
         <iccs340-post :post='post'></iccs340-post>
